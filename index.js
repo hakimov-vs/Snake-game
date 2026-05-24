@@ -23,13 +23,29 @@ groundImage.src = "assets/ground.png";
 let snakeCoords = [];
 
 snakeCoords[0] = {
+    x: 8*BOX,
+    y: 9*BOX
+}
+snakeCoords[1] = {
     x: 9*BOX,
     y: 9*BOX
 }
 
 function drawSnake(x, y){
+     ctx.beginPath();
+
+    ctx.arc(
+        x + BOX/2,   
+        y + BOX/2,   
+        BOX/2,  
+        0,
+        Math.PI * 2
+    );
+
     ctx.fillStyle = "green";
-    ctx.fillRect(x, y, BOX, BOX);
+    ctx.fill();
+
+    ctx.closePath();
 }
 
 function drawGame(){
@@ -42,35 +58,34 @@ function drawGame(){
         drawSnake(snakeCoords[i].x, snakeCoords[i].y);
     }
 
-    let snakeX = snakeCoords[0].x;
-    let snakeY = snakeCoords[0].y;
+    if(dir != ""){
+        let snakeX = snakeCoords[0].x;
+        let snakeY = snakeCoords[0].y;
 
+        if (dir == "up") snakeY -= BOX;
+        if (dir == "down") snakeY += BOX;
+        if (dir == "left") snakeX -= BOX;
+        if (dir == "right") snakeX += BOX;
 
-    if (dir == "up") snakeY -= BOX;
-	if (dir == "down") snakeY += BOX;
-    if (dir == "left") snakeX -= BOX;
-    if (dir == "right") snakeX += BOX;
+        if(snakeX == 18*BOX){
+            snakeX = BOX;
+        }
+        else if(snakeX == 0){
+            snakeX = 17*BOX;
+        }
+        if(snakeY == 18*BOX){
+            snakeY = BOX * 3;
+        }
+        else if(snakeY == BOX*2){
+            snakeY = 17*BOX;
+        }
 
-    if(snakeX == 18*BOX){
-        snakeX = BOX;
+        let head = {x: snakeX, y: snakeY}
+
+        snakeCoords.unshift(head);
+        
+        snakeCoords.pop();
     }
-    else if(snakeX == 0){
-        snakeX = 17*BOX;
-    }
-    if(snakeY == 18*BOX){
-        snakeY = BOX * 3;
-    }
-    else if(snakeY == BOX*2){
-        snakeY = 17*BOX;
-    }
-
-    let head = {x: snakeX, y: snakeY}
-
-    snakeCoords.unshift(head);
-
-    // snakeCoords.pop();
-
 }
-
 
 var mygame = setInterval(drawGame, SPEED)
