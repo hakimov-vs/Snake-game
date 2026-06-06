@@ -8,9 +8,9 @@ This project is a recreation of the classic Snake game using web technologies. N
 
 ## Technologies
 
-- **JavaScript** (68.5%) - Game logic and mechanics
-- **HTML** (26.3%) - Game canvas and structure
-- **CSS** (5.2%) - Styling and layout
+- **JavaScript** (70%) - Game logic and mechanics
+- **HTML** (25%) - Game canvas and structure
+- **CSS** (5%) - Styling and layout
 
 ## Features
 
@@ -18,7 +18,7 @@ This project is a recreation of the classic Snake game using web technologies. N
 - Food collection mechanics
 - Collision detection (walls and self)
 - Score tracking
-- Responsive controls
+- Controls
 
 ## How to Play
 
@@ -36,3 +36,5 @@ Simply open the game in your web browser to play. No additional dependencies or 
 1. Clone this repository
 2. Open the HTML file in your preferred web browser
 3. Start playing!
+
+Also available on https://hakimov-vs.github.io/Snake-game/ 
